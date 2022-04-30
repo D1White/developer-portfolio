@@ -1,0 +1,14 @@
+:root {
+  --primary: #1A1C20;
+  --secondary: #EEEFF1;
+  --aqua: #60A3BC;
+}
+
+$primary: var(--primary);
+$secondary: var(--secondary);
+$aqua: var(--aqua);
+
+$font-p: 'Poppins';
+$font-r: 'Roboto Mono';
+$ff-p: $font-p, sans-serif;
+$ff-r: $font-r, $font-p, sans-serif;

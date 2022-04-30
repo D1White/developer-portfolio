@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  @include r(1170) {
+    padding: 0 40px;
+  }
+  @include sm {
+    padding: 0 50;
+  }
+  @include xs {
+    padding: 0 25px;
+  }
+  @include xs {
+    padding: 0 20px;
+  }
+}

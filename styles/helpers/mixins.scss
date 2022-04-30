@@ -1,0 +1,94 @@
+@mixin r($width) {
+  @media only screen and (max-width: #{$width + "px"}) {
+    @content;
+  }
+}
+
+@mixin rhmin($height) {
+  @media only screen and (min-height: #{$height + "px"}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @include r(2559) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @include r(1919) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @include r(1440) {
+    @content;
+  }
+}
+
+@mixin ipadPro {
+  @include r(1439) {
+    @include rhmin(1340) {
+      @content;
+    }
+  }
+}
+
+@mixin md {
+  @include r(1024) {
+    @content;
+  }
+}
+
+@mixin ipad {
+  @include r(769) {
+    @include rhmin(1000) {
+      @content;
+    }
+  }
+}
+
+@mixin sm {
+  @include r(768) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @include r(599) {
+    @content;
+  }
+}
+
+@mixin xss {
+  @include r(360) {
+    @content;
+  }
+}
+
+/// $minSize: number – минимальный размер.
+/// $maxSize: number – максимальный размер.
+/// $minVp: number – размер вьюпорта при котором будет достигнут минимальный размер.
+/// $maxVp: number – размер вьюпорта при котором будет достигнут максимальный размер.
+/// $unit: 'vh' | 'vw' – от чего будет расчитываться размер – от высоты вьюпорта или от ширины.
+/// Если необходимо перейти от меньшего к большему, то поменяйте местами минимальные и максимальные значения.
+@function float-value($minSize, $maxSize, $minVp, $maxVp, $unit: 'vw') {
+  $calcFunc: 'calc(#{$minSize}px + (#{$maxSize} + #{$minSize}) * ((100#{$unit} - #{$minVp}px)/#{$maxVp}))';
+  $clampFunc: 'clamp(#{$minSize}px, #{$calcFunc}, #{$maxSize}px)';
+
+  // result
+  @return unquote($clampFunc);
+}
+%___example {
+  // Переход от больше к меньшему.
+  padding: float-value(20, 145, 375, 1920);
+  // Переход от меньшего к большему.
+  margin: float-value(145, 20, 1920, 375);
+  // Переход от больше к меньшему.
+  font-size: float-value(20, 145, 375, 1920);
+}
+@mixin FloatFontSize($minSize, $maxSize, $minVp, $maxVp, $unit: 'vw') {
+  font-size: float-value($minSize, $maxSize, $minVp, $maxVp, $unit);
+}

@@ -1,0 +1,28 @@
+@import './helpers';
+@import './containers';
+
+html {
+  scroll-behavior: smooth;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 100%;
+  font-family: $ff-p;
+  color: $primary;
+  background: $secondary;
+
+  &.no-scroll {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+::selection, ::-moz-selection  {
+  color: $secondary;
+  background-color: rgba($primary, 0.9);
+}
