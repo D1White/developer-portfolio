@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import React from 'react';
 
 import SEO from '@components/SEO';
 
@@ -8,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <>
       <SEO title={seoData.home.title} description={seoData.home.description} />
-      <main></main>
+      <main>Home</main>
     </>
   );
 };

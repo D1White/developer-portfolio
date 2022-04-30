@@ -1,6 +1,17 @@
 @import './helpers';
 @import './containers';
 
+:root {
+  --primary: #1A1C20;
+  --secondary: #EEEFF1;
+  --aqua: #60A3BC;
+}
+
+:root > body[theme="dark"] {
+  --primary: #EEEFF1;
+  --secondary: #1A1C20;
+}
+
 html {
   scroll-behavior: smooth;
   -moz-osx-font-smoothing: grayscale;
@@ -15,14 +26,29 @@ body {
   color: $primary;
   background: $secondary;
 
+  transition: color 0.2s, background 0.2s;
+
   &.no-scroll {
     margin: 0;
     height: 100%;
     overflow: hidden;
   }
-}
 
-::selection, ::-moz-selection  {
-  color: $secondary;
-  background-color: rgba($primary, 0.9);
+  ::selection {
+    color: $secondary;
+    background-color: lighten(#1A1C20, 10);
+  }
+  ::-moz-selection  {
+    color: $secondary;
+    background-color: lighten(#1A1C20, 10);
+  }
+
+  &[theme="dark"] {
+    ::selection {
+      background-color: lighten(#EEEFF1, 10);
+    }
+    ::-moz-selection {
+      background-color: lighten(#EEEFF1, 10);
+    }
+  }
 }

@@ -92,3 +92,54 @@
 @mixin FloatFontSize($minSize, $maxSize, $minVp, $maxVp, $unit: 'vw') {
   font-size: float-value($minSize, $maxSize, $minVp, $maxVp, $unit);
 }
+
+
+@mixin flexGap($gap, $direction: row, $element: '*') {
+  > #{$element} {
+    @if $direction == row {
+      margin: 0 calc($gap/2);
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    @if $direction == column {
+      margin: calc($gap/2) 0;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+%__example {
+  @include flexGap(80px);
+  @include flexGap(80px, column, '.link');
+}
+
+
+@mixin square($size, $units: 'px') {
+  width: $size + unquote($units);
+  height: $size + unquote($units);
+}
+
+@mixin flexCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexCenteredVertically {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flexCenteredHorizontally {
+  display: flex;
+  justify-content: center;
+}
