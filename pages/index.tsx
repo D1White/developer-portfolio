@@ -4,6 +4,7 @@ import React from 'react';
 import SEO from '@components/SEO';
 import HeroSection from '@components/HeroSection';
 import Skills from '@components/Skills';
+import Works from '@components/Projects';
 
 import { seoData } from '@assets/constants/seo';
 
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
       <main>
         <HeroSection />
         <Skills />
+        <Works />
       </main>
     </>
   );

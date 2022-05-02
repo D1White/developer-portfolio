@@ -1,0 +1,15 @@
+.wrapper {
+  margin-top: 30px;
+}
+
+.container {
+  align-items: center;
+}
+
+.projects {
+  width: 100%;
+  margin-top: 70px;
+  @include flexCentered;
+  flex-direction: column;
+  @include flexGap(70px, column);
+}

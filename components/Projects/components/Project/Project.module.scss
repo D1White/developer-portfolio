@@ -1,0 +1,104 @@
+.project {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+    .img {
+      margin-right: 50px;
+      margin-left: 0;
+    }
+  }
+}
+
+.img {
+  width: 58%;
+  border-radius: 8px;
+  margin-left: 50px;
+}
+
+.content {
+  width: 100%;
+  @include flexCenteredVertically;
+  justify-content: space-between;
+  flex-direction: column;
+
+  &.top {
+    justify-content: flex-start;
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.035em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  @include flexGap(5px, column);
+}
+
+.tool {
+  position: relative;
+  padding-left: 12px;
+  font-family: $ff-r;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.035em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 2px solid $primary;
+    top: calc(50% - 2px);
+    left: 0;
+  }
+}
+
+.links {
+  width: 100%;
+  @include flexCenteredVertically;
+  justify-content: space-around;
+}
+
+.link {
+  @include flexCentered;
+  padding: 12px 15px 12px 25px;
+  background: $primary;
+  border-radius: 10px;
+  @include flexGap(10px);
+
+  font-family: $ff-p;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.035em;
+  color: $secondary;
+
+  svg {
+    @include square(24);
+
+    path {
+      fill: $secondary;
+    }
+  }
+}
+
+.text {
+  margin-top: 75px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.035em;
+  text-align: center;
+}
