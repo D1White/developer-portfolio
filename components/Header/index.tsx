@@ -6,24 +6,7 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 import useSrolled from '@hooks/useSrolled';
 import SVGLogo from '@svg/white-logo.svg';
 
-const links = [
-  {
-    name: 'Main',
-    href: '/',
-  },
-  {
-    name: 'Skills',
-    href: '/#skills',
-  },
-  {
-    name: 'Works',
-    href: '/#works',
-  },
-  {
-    name: 'Contacts',
-    href: '/#contacts',
-  },
-];
+import { links } from '@constants/links';
 
 const Header = () => {
   const scrolled = useSrolled();

@@ -22,12 +22,12 @@
       "@assets/*": ["assets/*"],
       "@img/*": ["assets/img/*"],
       "@svg/*": ["assets/svg/*"],
+      "@constants/*": ["assets/constants/*"],
       "@hooks/*": ["hooks/*"],
       "@types/*": ["types/*"],
       "@utils/*": ["utils/*"],
-      "@constants/*": ["constants/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types/svg.d.ts"],
   "exclude": ["node_modules"]
 }

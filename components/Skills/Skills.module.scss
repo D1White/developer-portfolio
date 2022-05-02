@@ -1,0 +1,15 @@
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  align-items: center;
+}
+
+.skills {
+  width: 100%;
+  @include flexCenteredVertically;
+  justify-content: space-between;
+  margin-top: 50px;
+}

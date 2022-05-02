@@ -15,9 +15,9 @@ const HeroSection = () => {
           <Image src={Avatar} alt="avatar" layout="fill" />
         </div>
         <h1 className={styles.title}>Hi, I'm Danylo Bilyi 👋</h1>
-        <h2 className={styles.subtitle}>
+        <h3 className={styles.subtitle}>
           Front-end developer passionate about creating beautiful user-friendly apps
-        </h2>
+        </h3>
       </div>
       <div className={styles.circle}>
         <SVGArrow className={styles.arrow} />
