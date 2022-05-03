@@ -1,0 +1,43 @@
+.wrapper {
+  margin-top: 70px;
+  width: 100%;
+}
+
+.container {
+  align-items: center;
+  @include flexGap(40px, column);
+}
+
+.text {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+  color: $primary;
+}
+
+.link {
+  font-family: $ff-r;
+  transition: color 0.2s;
+  &:hover {
+    color: $aqua
+  }
+}
+
+.buttons {
+  @include flexCentered;
+  @include flexGap(50px);
+}
+
+.btn {
+  @include square(50);
+  border-radius: 50%;
+  @include flexCentered;
+
+  svg {
+    width: 100%;
+    height: auto;
+    path {
+      fill: $primary;
+    }
+  }
+}
