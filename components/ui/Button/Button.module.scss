@@ -1,0 +1,52 @@
+.wrapper {
+  @include flexCentered;
+  background: none;
+  border-radius: 10px;
+  position: relative;
+
+  &:hover {
+    .bg {
+      transform: scale(1.1)
+    }
+    .round {
+      transform: translate(-50%, -50%) scale(30);
+      opacity: 0;
+    }
+  }
+}
+
+.content {
+  @include flexCentered;
+  @include flexGap(10px);
+  position: relative;
+  z-index: 1;
+  color: $secondary;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $primary;
+  z-index: -1;
+  border-radius: 10px;
+  transition: transform 0.3s $bounce;
+  overflow: hidden;
+}
+
+.round {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  border: 1px solid lighten(#1A1C20, 5);
+  z-index: 0;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 1;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}

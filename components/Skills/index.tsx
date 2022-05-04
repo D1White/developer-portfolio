@@ -5,7 +5,7 @@ import styles from './Skills.module.scss';
 
 import SkillsGrid from './components/SkillsGrid';
 import SkillsList from './components/SkillsList';
-import SectionTitle from '@components/SectionTitle';
+import SectionTitle from '@components/ui/SectionTitle';
 
 import { skills } from '@constants/skills';
 

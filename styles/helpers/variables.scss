@@ -9,3 +9,5 @@ $font-p: 'Poppins';
 $font-r: 'Roboto Mono';
 $ff-p: $font-p, sans-serif;
 $ff-r: $font-r, $font-p, sans-serif;
+
+$bounce: cubic-bezier(0.18, 0.89, 0.32, 1.6);

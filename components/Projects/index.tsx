@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import styles from './Projects.module.scss';
 
-import SectionTitle from '@components/SectionTitle';
+import SectionTitle from '@components/ui/SectionTitle';
 import Project from './components/Project';
 import EmptyProject from './components/Project/EmptyProject';
 

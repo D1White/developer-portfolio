@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import SectionTitle from '@components/SectionTitle';
+import SectionTitle from '@components/ui/SectionTitle';
 import styles from './Contacts.module.scss';
 import { contacts } from '@constants/contacts';
 

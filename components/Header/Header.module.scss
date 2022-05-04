@@ -45,14 +45,32 @@
 }
 
 .link {
+  position: relative;
   color: $primary;
   font-weight: 500;
   text-transform: capitalize;
 
   transition: color 0.2s;
 
+  &::after {
+    content: '';
+    width: 0;
+    height: 1.5px;
+    background-color: rgba($aqua, 0.8);
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+
+    transition: width 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.3), right 0.4s ease-in-out;
+  }
+
   &:hover {
     color: $aqua;
+    &::after {
+      width: 100%;
+      right: initial;
+      left: 0;
+    }
   }
 }
 
@@ -60,8 +78,13 @@
   @include square(30);
   @include flexCentered;
   background: none;
+  transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 3);
 
   svg {
     @include square(100, '%');
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 }
