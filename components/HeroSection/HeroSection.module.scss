@@ -2,6 +2,10 @@
   height: 100vh;
   padding-top: 88px;
   position: relative;
+
+  @include sm {
+    padding-top: 77px;
+  }
 }
 
 .container {
@@ -10,6 +14,12 @@
 
   @include lg {
     margin-top: 30px;
+  }
+  @include sm {
+    margin-top: 40px;
+  }
+  @include xs {
+    margin-top: 70px;
   }
 }
 
@@ -23,6 +33,12 @@
 
   @include lg {
     @include square(120);
+  }
+  @include sm {
+    @include square(150);
+  }
+  @include xs {
+    @include square(100);
   }
 }
 
@@ -38,6 +54,13 @@
     font-size: 30px;
     line-height: 120%;
     margin-top: 25px;
+  }
+  @include sm {
+    margin-top: 40px;
+  }
+  @include xs {
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 
@@ -58,6 +81,20 @@
     font-size: 50px;
     line-height: 110%;
   }
+
+  @include sm {
+    margin-top: 60px;
+    font-size: 48px;
+    line-height: 130%;
+  }
+
+  @include xs {
+    font-size: 20px;
+  }
+
+  @include xss {
+    font-size: 18px;
+  }
 }
 
 .circle {
@@ -75,6 +112,13 @@
     bottom: 40px;
     border: 2px solid $primary;
   }
+  @include sm {
+    @include square(80);
+  }
+  @include xs {
+    @include square(60);
+    bottom: 50px;
+  }
 }
 
 @keyframes arrow_anim {
@@ -87,6 +131,8 @@
 }
 
 .arrow {
+  width: 28%;
+  height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,9 +141,5 @@
 
   path {
     fill: $primary;
-  }
-
-  @include lg {
-    transform: translate(-50%, -50%) scale(0.7);
   }
 }

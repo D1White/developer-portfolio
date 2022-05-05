@@ -16,5 +16,21 @@
     left: 50%;
     bottom: 8px;
     transform: translateX(-50%);
+
+    @include md {
+      height: 3px;
+    }
+  }
+
+  @include md {
+    font-size: 58px;
+  }
+
+  @include sm {
+    font-size: 64px;
+  }
+
+  @include xs {
+    font-size: 48px;
   }
 }

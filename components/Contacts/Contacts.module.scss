@@ -1,6 +1,10 @@
 .wrapper {
   margin-top: 70px;
   width: 100%;
+
+  @include sm {
+    margin-top: 100px;
+  }
 }
 
 .container {
@@ -13,6 +17,13 @@
   font-size: 24px;
   line-height: 130%;
   color: $primary;
+
+  @include xs {
+    font-size: 20px;
+  }
+  @include xss {
+    font-size: 18px;
+  }
 }
 
 .link {
@@ -45,6 +56,11 @@
 .buttons {
   @include flexCentered;
   @include flexGap(50px);
+
+  @include xs {
+    @include flexGap(30px);
+    flex-wrap: wrap;
+  }
 }
 
 .btn {
@@ -69,5 +85,9 @@
       fill: $primary;
       transition: transform 0.4s ease-out;
     }
+  }
+
+  @include xs {
+    @include square(40);
   }
 }

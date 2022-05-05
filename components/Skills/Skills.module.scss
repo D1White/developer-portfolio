@@ -1,6 +1,17 @@
 .wrapper {
+  margin-top: 40px;
   width: 100%;
   position: relative;
+
+  @include lg {
+    margin-top: 30px;
+  }
+  @include sm {
+    margin-top: 50px;
+  }
+  @include xs {
+    margin-top: 30px;
+  }
 }
 
 .container {
@@ -12,4 +23,9 @@
   @include flexCenteredVertically;
   justify-content: space-between;
   margin-top: 50px;
+
+  @include sm {
+    flex-direction: column;
+    @include flexGap(60px, column);
+  }
 }

@@ -1,5 +1,12 @@
 .wrapper {
-  margin-top: 30px;
+  margin-top: 40px;
+
+  @include lg {
+    margin-top: 30px;
+  }
+  @include sm {
+    margin-top: 70px;
+  }
 }
 
 .container {

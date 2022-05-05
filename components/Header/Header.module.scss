@@ -23,10 +23,18 @@
 .content {
   display: flex;
   align-items: center;
+
+  @include xs {
+    display: none;
+  }
 }
 
 .logo {
   @include square(55);
+
+  @include md {
+    @include square(45);
+  }
 
   path {
     fill: $primary;

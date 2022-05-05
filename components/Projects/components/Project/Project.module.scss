@@ -8,7 +8,15 @@
     .img {
       margin-right: 50px;
       margin-left: 0;
+      @include sm {
+        margin-right: 0;
+      }
     }
+  }
+
+  @include sm {
+    flex-direction: column-reverse !important;
+    align-items: center;
   }
 }
 
@@ -16,6 +24,11 @@
   width: 58%;
   border-radius: 8px;
   margin-left: 50px;
+
+  @include sm {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 .content {
@@ -27,6 +40,10 @@
   &.top {
     justify-content: flex-start;
   }
+
+  @include sm {
+    margin-top: 40px;
+  }
 }
 
 .title {
@@ -35,6 +52,11 @@
   line-height: 39px;
   text-align: center;
   letter-spacing: 0.035em;
+
+  @include xs {
+    font-size: 18px;
+    line-height: 27px;
+  }
 }
 
 .list {
@@ -42,6 +64,18 @@
   flex-direction: column;
   list-style: none;
   @include flexGap(5px, column);
+
+  @include sm {
+    margin-top: 50px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    @include flexGap(5px, row);
+  }
+  @include xs {
+    margin-top: 40px;
+  }
 }
 
 .tool {
@@ -56,41 +90,60 @@
   &::before {
     content: "";
     position: absolute;
-    width: 7px;
-    height: 7px;
+    @include square(7);
     border-radius: 50%;
     border: 2px solid $primary;
     top: calc(50% - 2px);
     left: 0;
+
+    @include md {
+      @include square(5);
+      border: 1px solid $primary;
+    }
+    @include sm {
+      left: 5px;
+    }
   }
+
+  @include md {
+    font-size: 16px;
+    line-height: 120%;
+  }
+  @include sm {
+    font-size: 20px;
+    padding-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+  @include xs {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.square {
+  @include square(5);
+  border: 1px solid $primary;
+  border-radius: 50%;
 }
 
 .links {
   width: 100%;
   @include flexCenteredVertically;
   justify-content: space-around;
-}
 
-.link {
-  @include flexCentered;
-  padding: 12px 15px 12px 25px;
-  background: $primary;
-  border-radius: 10px;
-  @include flexGap(10px);
-
-  font-family: $ff-p;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
-  letter-spacing: 0.035em;
-  color: $secondary;
-
-  svg {
-    @include square(24);
-
-    path {
-      fill: $secondary;
-    }
+  @include md {
+    justify-content: space-between;
+  }
+  @include sm {
+    margin-top: 50px;
+    justify-content: space-around;
+  }
+  @include xs {
+    margin-top: 40px;
+    justify-content: space-between;
   }
 }
 
@@ -109,6 +162,28 @@
     path {
       fill: $secondary;
     }
+
+    @include md {
+      @include square(20);
+    }
+    @include sm {
+      @include square(24);
+    }
+  }
+
+  @include md {
+    font-size: 20px;
+    line-height: 120%;
+    padding: 12px 15px 12px 20px;
+  }
+  @include sm {
+    font-size: 24px;
+    line-height: 36px;
+    padding: 12px 15px 12px 25px;
+  }
+  @include xs {
+    font-size: 18px;
+    line-height: 27px;
   }
 }
 
@@ -120,4 +195,19 @@
   line-height: 30px;
   letter-spacing: 0.035em;
   text-align: center;
+
+  @include md {
+    font-size: 18px;
+    line-height: 130%;
+  }
+  @include sm {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 470px;
+    margin-top: 40px;
+  }
+  @include xs {
+    font-size: 14px;
+    line-height: 21px;
+  }
 }
