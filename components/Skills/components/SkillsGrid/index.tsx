@@ -36,7 +36,7 @@ const SkillsGrid: FC<Props> = ({ move }) => {
   useEffect(() => {
     const items = gridRef.current?.children;
 
-    if (items) {
+    if (items && window) {
       Array.from(items).forEach((item) => {
         const speed = item.getAttribute('data-speed') || 0;
         const x = (window.innerWidth - mousePos.x * +speed) / 100;

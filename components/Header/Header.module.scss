@@ -24,10 +24,6 @@
 .content {
   display: flex;
   align-items: center;
-
-  @include xs {
-    display: none;
-  }
 }
 
 .logo {
@@ -87,7 +83,8 @@
   @include square(30);
   @include flexCentered;
   background: none;
-  transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 3);
+  opacity: 1;
+  transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 3), opacity 0.3s ease;
 
   svg {
     @include square(100, '%');
@@ -95,6 +92,10 @@
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  &.hide {
+    opacity: 0;
   }
 }
 

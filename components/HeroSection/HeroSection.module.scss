@@ -2,6 +2,7 @@
   height: 100vh;
   padding-top: 88px;
   position: relative;
+  overflow: hidden;
 
   @include sm {
     padding-top: 77px;
@@ -23,14 +24,8 @@
   }
 }
 
-.avatar {
-  position: relative;
+.avatarWrapper {
   @include square(150);
-  @include flexCentered;
-  border-radius: 50%;
-  border: 2px solid $dark;
-  background-color: lighten($aqua, 35);
-
   @include lg {
     @include square(120);
   }
@@ -42,6 +37,15 @@
   }
 }
 
+.avatar {
+  position: relative;
+  @include square(100, '%');
+  @include flexCentered;
+  border-radius: 50%;
+  border: 2px solid $dark;
+  background-color: lighten($aqua, 35);
+}
+
 .title {
   font-family: $ff-r;
   font-weight: 500;
@@ -49,6 +53,7 @@
   line-height: 47px;
   letter-spacing: -0.07em;
   margin-top: 35px;
+  white-space: nowrap;
 
   @include lg {
     font-size: 30px;

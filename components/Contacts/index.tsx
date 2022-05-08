@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import cn from 'classnames';
+import { gsap, Power1 } from 'gsap';
+import scrollTrigger from 'gsap/dist/ScrollTrigger';
 
 import SectionTitle from '@components/ui/SectionTitle';
 import styles from './Contacts.module.scss';
 import { contacts } from '@constants/contacts';
+
+gsap.registerPlugin(scrollTrigger);
 
 const Contacts = () => {
   return (
@@ -12,11 +16,11 @@ const Contacts = () => {
         <SectionTitle>Contacts</SectionTitle>
 
         <p className={styles.text}>You can find me here:</p>
-        <a href="mailto:danilo.bilyi@gmail.com" className={cn(styles.text, styles.link)}>
-          danilo.bilyi@gmail.com
+        <a href={`mailto:${contacts.email}`} className={cn(styles.text, styles.link)}>
+          {contacts.email}
         </a>
         <a
-          href="https://drive.google.com/file/d/1H_BzelXrWhHYTq7NHNPPryMIBPFeT9xA/view?usp=sharing"
+          href={contacts.cv}
           target="_blank"
           rel="noopener noreferrer"
           className={cn(styles.text, styles.link)}

@@ -1,12 +1,29 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, FC, useMemo } from 'react';
+import cn from 'classnames';
 
 import styles from '../Header.module.scss';
 
+import { useIsTablet } from '@hooks/useBreakpoint';
 import SVGLightTheme from '@svg/light-theme.svg';
 import SVGDarkTheme from '@svg/dark-theme.svg';
 
-const ThemeSwitcher = () => {
+interface Props {
+  visible?: boolean;
+}
+
+const ThemeSwitcher: FC<Props> = ({ visible }) => {
+  const isMobile = useIsTablet();
   const [light, setLight] = useState(true);
+
+  const componentVisible = useMemo(() => {
+    if (typeof visible === 'undefined') return true;
+
+    if (isMobile) {
+      return visible;
+    }
+
+    return false;
+  }, [isMobile, visible]);
 
   useEffect(() => {
     const storageTheme = localStorage.getItem('theme');
@@ -39,7 +56,11 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <button className={styles.themeSwitcher} onClick={switcher} aria-label="theme switcher">
+    <button
+      className={cn(styles.themeSwitcher, { [styles.hide]: !componentVisible })}
+      onClick={switcher}
+      aria-label="theme switcher"
+    >
       {light ? <SVGDarkTheme /> : <SVGLightTheme />}
     </button>
   );

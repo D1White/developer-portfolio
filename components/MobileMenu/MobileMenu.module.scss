@@ -11,11 +11,17 @@
   @include flexCentered;
 }
 
-.links {
+.nav {
   @include flexCentered;
   flex-direction: column;
   @include flexGap(30px, column);
   margin-bottom: 30px;
+}
+
+.linkWrapper {
+  position: relative;
+  display: flex;
+  overflow: hidden;
 }
 
 .link {
@@ -23,6 +29,7 @@
   font-size: 36px;
   line-height: 54px;
   color: $primary;
+  text-transform: capitalize;
 }
 
 .buttons {

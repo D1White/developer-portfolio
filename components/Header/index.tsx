@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import cn from 'classnames';
+import { gsap, Power1 } from 'gsap';
 
 import styles from './Header.module.scss';
 import ThemeSwitcher from './components/ThemeSwitcher';
@@ -13,7 +14,38 @@ import { links } from '@constants/links';
 const Header = () => {
   const scrolled = useSrolled();
   const isMobile = useIsTablet();
+
+  const logoRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const themeSwitcherRef = useRef<HTMLDivElement>(null);
+
   const [menuVisible, setMenuVisible] = useState(false);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: Power1.easeOut } });
+    const links = navRef.current?.children;
+
+    tl.fromTo(logoRef.current, { xPercent: -300 }, { xPercent: 0, duration: 0.8 });
+
+    if (!isMobile && links) {
+      tl.fromTo(
+        links,
+        {
+          y: -60,
+        },
+        {
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+        },
+        '-=0.4',
+      ).fromTo(themeSwitcherRef.current, { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.3');
+    }
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   const menuToggle = () => {
     setMenuVisible((val) => !val);
@@ -23,32 +55,42 @@ const Header = () => {
     <>
       <header className={cn(styles.header, { [styles.scroll]: scrolled })}>
         <div className={cn('container', styles.container)}>
-          <SVGLogo className={styles.logo} />
-
-          <div className={styles.content}>
-            <nav className={styles.nav}>
-              {links.map((link) => (
-                <a href={link.href} key={link.name} className={styles.link}>
-                  {link.name}
-                </a>
-              ))}
-            </nav>
-
-            <ThemeSwitcher />
+          <div ref={logoRef}>
+            <SVGLogo className={styles.logo} />
           </div>
 
-          {isMobile && menuVisible && <ThemeSwitcher />}
+          {!isMobile && (
+            <div className={styles.content}>
+              <nav className={styles.nav} ref={navRef}>
+                {links.map((link) => (
+                  <a href={link.href} key={link.name} className={styles.link}>
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
 
-          <button
-            className={cn(styles.burgerMenu, { [styles.close]: menuVisible })}
-            onClick={menuToggle}
-            aria-label="burger menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+              <div ref={themeSwitcherRef}>
+                <ThemeSwitcher />
+              </div>
+            </div>
+          )}
+
+          {isMobile && (
+            <>
+              <ThemeSwitcher visible={menuVisible} />
+
+              <button
+                className={cn(styles.burgerMenu, { [styles.close]: menuVisible })}
+                onClick={menuToggle}
+                aria-label="burger menu"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </>
+          )}
         </div>
       </header>
       {isMobile && <MobileMenu visible={menuVisible} />}

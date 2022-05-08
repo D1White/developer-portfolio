@@ -5,7 +5,7 @@
 
   &:nth-child(even) {
     flex-direction: row-reverse;
-    .img {
+    .imgWrapper {
       margin-right: 50px;
       margin-left: 0;
       @include sm {
@@ -20,7 +20,8 @@
   }
 }
 
-.img {
+.imgWrapper {
+  overflow: hidden;
   width: 58%;
   border-radius: 8px;
   margin-left: 50px;
@@ -31,8 +32,13 @@
   }
 }
 
-.content {
+.img {
   width: 100%;
+  height: auto;
+}
+
+.content {
+  width: calc(48% - 50px);
   @include flexCenteredVertically;
   justify-content: space-between;
   flex-direction: column;
@@ -42,8 +48,13 @@
   }
 
   @include sm {
+    width: 100%;
     margin-top: 40px;
   }
+}
+
+.titleWrapper {
+  overflow: hidden;
 }
 
 .title {
