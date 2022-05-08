@@ -14,7 +14,7 @@ interface Props {
   title: string;
   tools: string[];
   img: string;
-  link: string;
+  link?: string;
   gitLink: string;
 }
 
@@ -39,14 +39,19 @@ const Project: FC<Props> = ({ title, tools, img, link, gitLink }) => {
       imgRef.current,
       { opacity: 0, scale: 1.2 },
       { opacity: 1, scale: 1, duration: 0.8 },
-      0,
-    ).fromTo(titleRef.current, { yPercent: -100 }, { yPercent: 0, duration: 0.8 }, 0);
+      0.2,
+    ).fromTo(titleRef.current, { yPercent: -100 }, { yPercent: 0, duration: 0.8 }, 0.2);
 
     if (tools) {
       tl.fromTo(tools, { opacity: 0 }, { opacity: 1, stagger: 0.15 }, '-=0.4');
     }
 
-    tl.fromTo(btnsRef.current, { opacity: 0 }, { opacity: 1, stagger: 0.2 }, '-=0.2');
+    tl.fromTo(
+      btnsRef.current,
+      { opacity: 0 },
+      { opacity: 1, stagger: 0.2, duration: 0.8 },
+      '-=0.2',
+    );
 
     return () => {
       tl.kill();
@@ -80,10 +85,12 @@ const Project: FC<Props> = ({ title, tools, img, link, gitLink }) => {
         </ul>
 
         <div className={styles.links} ref={btnsRef}>
-          <Button link={link} external className={styles.btn}>
-            <span>visit</span>
-            <SVGArrow />
-          </Button>
+          {link && (
+            <Button link={link} external className={styles.btn}>
+              <span>visit</span>
+              <SVGArrow />
+            </Button>
+          )}
           <Button link={gitLink} external className={styles.btn}>
             <span>source</span>
             <GitIcon />
