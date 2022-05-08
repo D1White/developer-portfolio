@@ -1,5 +1,6 @@
 import React, { FC, memo, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import Link from 'next/link';
 
 import styles from './MobileMenu.module.scss';
 import { links } from '@constants/links';
@@ -7,9 +8,10 @@ import { contacts } from '@constants/contacts';
 
 interface Props {
   visible: boolean;
+  setVisible: React.Dispatch<boolean>;
 }
 
-const MobileMenu: FC<Props> = ({ visible }) => {
+const MobileMenu: FC<Props> = ({ visible, setVisible }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const btnsRef = useRef<HTMLDivElement>(null);
@@ -67,14 +69,18 @@ const MobileMenu: FC<Props> = ({ visible }) => {
     }
   }, [visible]);
 
+  const linkClick = () => {
+    setVisible(false);
+  };
+
   return (
     <div className={styles.wrapper} ref={menuRef}>
       <nav className={styles.nav} ref={navRef}>
         {links.map((link) => (
-          <div className={styles.linkWrapper} key={link.name}>
-            <a href={link.href} className={styles.link}>
-              {link.name}
-            </a>
+          <div className={styles.linkWrapper} key={link.name} onClick={linkClick}>
+            <Link href={link.href}>
+              <a className={styles.link}>{link.name}</a>
+            </Link>
           </div>
         ))}
       </nav>

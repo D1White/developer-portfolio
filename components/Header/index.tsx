@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import cn from 'classnames';
+import Link from 'next/link';
 import { gsap, Power1 } from 'gsap';
 
 import styles from './Header.module.scss';
@@ -63,9 +64,9 @@ const Header = () => {
             <div className={styles.content}>
               <nav className={styles.nav} ref={navRef}>
                 {links.map((link) => (
-                  <a href={link.href} key={link.name} className={styles.link}>
-                    {link.name}
-                  </a>
+                  <Link href={link.href} key={link.name}>
+                    <a className={styles.link}>{link.name}</a>
+                  </Link>
                 ))}
               </nav>
 
@@ -93,7 +94,7 @@ const Header = () => {
           )}
         </div>
       </header>
-      {isMobile && <MobileMenu visible={menuVisible} />}
+      {isMobile && <MobileMenu visible={menuVisible} setVisible={setMenuVisible} />}
     </>
   );
 };

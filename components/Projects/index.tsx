@@ -11,7 +11,7 @@ import { works } from '@constants/works';
 
 const Projects = () => {
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} id="projects">
       <div className={cn('container', styles.container)}>
         <SectionTitle>Projects</SectionTitle>
         <div className={styles.projects}>

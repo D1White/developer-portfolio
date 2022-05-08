@@ -23,7 +23,12 @@ const Skills = () => {
   };
 
   return (
-    <section className={styles.wrapper} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <section
+      className={styles.wrapper}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      id="skills"
+    >
       <div className={cn('container', styles.container)}>
         <SectionTitle>Skills</SectionTitle>
         <div className={styles.skills}>

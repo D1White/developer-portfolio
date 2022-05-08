@@ -11,7 +11,7 @@ gsap.registerPlugin(scrollTrigger);
 
 const Contacts = () => {
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} id="contacts">
       <div className={cn('container', styles.container)}>
         <SectionTitle>Contacts</SectionTitle>
 
