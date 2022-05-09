@@ -8,20 +8,20 @@ import Skills from '@components/Skills';
 import Projects from '@components/Projects';
 import Contacts from '@components/Contacts';
 import Quote from '@components/Quote';
-import { getSkills, getProjects, getContacts } from '@utils/api';
-import { ISkills, IProject, IContacts } from 'types/contentful';
-import { seoData } from '@assets/constants/seo';
+import { getSkills, getProjects, getContacts, getEntry } from '@utils/api';
+import { ISkills, IProject, IContacts, ISeo } from 'types/contentful';
 
 interface Props {
   skills: ISkills[];
   projects: IProject[];
   contacts: IContacts;
+  seo: ISeo;
 }
 
-const Home: NextPage<Props> = ({ skills, projects, contacts }) => {
+const Home: NextPage<Props> = ({ skills, projects, contacts, seo }) => {
   return (
     <>
-      <SEO title={seoData.home.title} description={seoData.home.description} />
+      <SEO data={seo} />
       <Header contacts={contacts} />
       <main>
         <HeroSection />
@@ -40,8 +40,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const skills = await getSkills();
   const projects = await getProjects();
   const contacts = await getContacts();
+  const seo = await getEntry<ISeo>('1NC7usoeM9gPbQqnxWY72v');
 
   return {
-    props: { skills, projects, contacts },
+    props: { skills, projects, contacts, seo },
   };
 };

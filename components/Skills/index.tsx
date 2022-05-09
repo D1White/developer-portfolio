@@ -8,8 +8,6 @@ import SkillsList from './components/SkillsList';
 import SectionTitle from '@components/ui/SectionTitle';
 import { ISkills } from 'types/contentful';
 
-import { skills } from '@constants/skills';
-
 interface Props {
   skills: ISkills[];
 }

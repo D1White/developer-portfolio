@@ -93,6 +93,46 @@ export interface IProject extends Entry<IProjectFields> {
   };
 }
 
+export interface ISeoFields {
+  /** Title */
+  title: string;
+
+  /** Description */
+  description: string;
+
+  /** Image */
+  image?: Asset | undefined;
+
+  /** Keywords */
+  keywords?: string[] | undefined;
+
+  /** OG Title */
+  ogTitle?: string | undefined;
+
+  /** OG Description */
+  ogDescription?: string | undefined;
+
+  /** OG Image */
+  ogImage?: Asset | undefined;
+}
+
+export interface ISeo extends Entry<ISeoFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'seo';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface ISkillsFields {
   /** Title */
   title: string;
@@ -118,7 +158,7 @@ export interface ISkills extends Entry<ISkillsFields> {
   };
 }
 
-export type CONTENT_TYPE = 'contact' | 'contacts' | 'project' | 'skills';
+export type CONTENT_TYPE = 'contact' | 'contacts' | 'project' | 'seo' | 'skills';
 
 export type LOCALE_CODE = 'en-US';
 
