@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import styles from './SkillsGrid.module.scss';
 
-import { skillsIcon } from '@constants/skills';
+import { skillsIcon } from '@constants/skillsIcon';
 
 interface Props {
   move: boolean;

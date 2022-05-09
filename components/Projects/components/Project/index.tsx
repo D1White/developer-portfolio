@@ -7,18 +7,15 @@ import Button from '@components/ui/Button';
 import { useIsTablet } from '@hooks/useBreakpoint';
 import SVGArrow from '@svg/arrow-link.svg';
 import GitIcon from '@svg/github.svg';
+import { IProject } from 'types/contentful';
 
 gsap.registerPlugin(scrollTrigger);
 
 interface Props {
-  title: string;
-  tools: string[];
-  img: string;
-  link?: string;
-  gitLink: string;
+  data: IProject;
 }
 
-const Project: FC<Props> = ({ title, tools, img, link, gitLink }) => {
+const Project: FC<Props> = ({ data }) => {
   const isMobile = useIsTablet();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -63,12 +60,12 @@ const Project: FC<Props> = ({ title, tools, img, link, gitLink }) => {
       <div className={styles.content}>
         <div className={styles.titleWrapper}>
           <h5 className={styles.title} ref={titleRef}>
-            {title}
+            {data.fields.name}
           </h5>
         </div>
 
         <ul className={styles.list} ref={toolsRef}>
-          {tools.map((item, idx) => {
+          {data.fields.tools.map((item, idx) => {
             return isMobile ? (
               <Fragment key={item}>
                 {idx !== 0 && <div className={styles.square} />}
@@ -85,20 +82,25 @@ const Project: FC<Props> = ({ title, tools, img, link, gitLink }) => {
         </ul>
 
         <div className={styles.links} ref={btnsRef}>
-          {link && (
-            <Button link={link} external className={styles.btn}>
+          {data.fields?.link && (
+            <Button link={data.fields.link} external className={styles.btn}>
               <span>visit</span>
               <SVGArrow />
             </Button>
           )}
-          <Button link={gitLink} external className={styles.btn}>
+          <Button link={data.fields.gitLink} external className={styles.btn}>
             <span>source</span>
             <GitIcon />
           </Button>
         </div>
       </div>
       <div className={styles.imgWrapper}>
-        <img src={img} alt={title} className={styles.img} ref={imgRef} />
+        <img
+          src={data.fields.image.fields.file.url}
+          alt={data.fields.name}
+          className={styles.img}
+          ref={imgRef}
+        />
       </div>
     </div>
   );
