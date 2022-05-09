@@ -4,14 +4,16 @@ import Link from 'next/link';
 
 import styles from './MobileMenu.module.scss';
 import { links } from '@constants/links';
-import { contacts } from '@constants/contacts';
+import getContactIcon from '@utils/getContactIcon';
+import { IContacts } from 'types/contentful';
 
 interface Props {
   visible: boolean;
   setVisible: React.Dispatch<boolean>;
+  contacts: IContacts;
 }
 
-const MobileMenu: FC<Props> = ({ visible, setVisible }) => {
+const MobileMenu: FC<Props> = ({ visible, setVisible, contacts }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const btnsRef = useRef<HTMLDivElement>(null);
@@ -86,16 +88,16 @@ const MobileMenu: FC<Props> = ({ visible, setVisible }) => {
       </nav>
 
       <div className={styles.buttons} ref={btnsRef}>
-        {contacts.links.map((link) => (
+        {contacts.fields?.links?.map((link) => (
           <a
-            href={link.url}
+            href={link.fields.link}
             target="_blank"
             rel="noopener noreferrer"
-            key={link.name}
+            key={link.sys.id}
             className={styles.btn}
-            aria-label={link.name}
+            aria-label={link.fields.name}
           >
-            {link.icon()}
+            {getContactIcon(link.fields.name)}
           </a>
         ))}
       </div>

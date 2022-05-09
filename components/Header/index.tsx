@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, FC } from 'react';
 import cn from 'classnames';
 import Link from 'next/link';
 import { gsap, Power1 } from 'gsap';
@@ -11,8 +11,13 @@ import { useIsTablet } from '@hooks/useBreakpoint';
 import SVGLogo from '@svg/white-logo.svg';
 
 import { links } from '@constants/links';
+import { IContacts } from 'types/contentful';
 
-const Header = () => {
+interface Props {
+  contacts: IContacts;
+}
+
+const Header: FC<Props> = ({ contacts }) => {
   const scrolled = useSrolled();
   const isMobile = useIsTablet();
 
@@ -94,7 +99,9 @@ const Header = () => {
           )}
         </div>
       </header>
-      {isMobile && <MobileMenu visible={menuVisible} setVisible={setMenuVisible} />}
+      {isMobile && (
+        <MobileMenu visible={menuVisible} setVisible={setMenuVisible} contacts={contacts} />
+      )}
     </>
   );
 };
