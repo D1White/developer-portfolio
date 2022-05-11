@@ -95,12 +95,15 @@ const Project: FC<Props> = ({ data }) => {
         </div>
       </div>
       <div className={styles.imgWrapper}>
-        <img
-          src={data.fields.image.fields.file.url}
-          alt={data.fields.name}
-          className={styles.img}
-          ref={imgRef}
-        />
+        <picture>
+          <source srcSet={`${data.fields.image.fields.file.url}?fm=webp`} type="image/webp" />
+          <img
+            src={data.fields.image.fields.file.url}
+            alt={data.fields.name}
+            className={styles.img}
+            ref={imgRef}
+          />
+        </picture>
       </div>
     </div>
   );
