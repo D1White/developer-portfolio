@@ -1,6 +1,6 @@
 const isProduction = process.env.NODE_ENV === 'production';
 
-export const pageview = (url: URL) => {
+export const pageview = (url: URL | string) => {
   if (isProduction) {
     window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
       page_path: url,

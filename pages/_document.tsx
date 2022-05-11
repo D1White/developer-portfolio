@@ -26,14 +26,12 @@ class MyDocument extends Document {
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           {process.env.NODE_ENV === 'production' && (
             <>
-              <Script
+              <script
                 async
-                strategy="afterInteractive"
                 src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
               />
-              <Script
+              <script
                 id="gtag-init"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                   __html: `
             window.dataLayer = window.dataLayer || [];

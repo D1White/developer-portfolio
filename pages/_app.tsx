@@ -11,6 +11,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
+    pageview(window.location.pathname);
+  }, []);
+
+  useEffect(() => {
     const handleRouteChange = (url: URL) => {
       pageview(url);
     };
