@@ -42,7 +42,6 @@
   @include square(100, '%');
   @include flexCentered;
   border-radius: 50%;
-  border: 2px solid $dark;
   background-color: lighten($aqua, 35);
 }
 
